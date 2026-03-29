@@ -5,6 +5,8 @@ import logging
 import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from . import __version__
 from .config import DEFAULT_LANGUAGES
 from .downloader import process_directory
@@ -72,6 +74,8 @@ def setup_logging(verbose: bool):
 
 
 def main(argv: list[str] | None = None):
+    load_dotenv()
+
     parser = build_parser()
     args = parser.parse_args(argv)
 
